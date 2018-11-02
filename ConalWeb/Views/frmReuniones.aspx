@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/MasterPage.Master" AutoEventWireup="true" CodeBehind="frmBoletines.aspx.cs" Inherits="ConalWeb.PanelBoletines" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/MasterPage.Master" AutoEventWireup="true" CodeBehind="frmReuniones.aspx.cs" Inherits="ConalWeb.PanelReuniones" %>
 <%@ PreviousPageType VirtualPath="~/Views/frmIniciarSesion.aspx" %> 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content_reuniones_1" ContentPlaceHolderID="head" runat="server">
     <!-- script para estilos específicos del view -->
     <style type="text/css">
         .txtBoxRounded
@@ -28,12 +28,9 @@
     </style>
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content_reuniones_2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div style="margin-top: 10px; height:60px; float:none">
-        <div id="divBuscar" runat="server" style="float:left">
-            <asp:TextBox ID="txtBuscar" CssClass="txtBoxRounded" Width="180px" runat="server" placeholder="Buscar perfil" ></asp:TextBox>
-            <asp:ImageButton ID="imgBuscar" AlternateText="Buscar" ImageAlign="Middle" ImageUrl="~/img/lupa_icon.png" runat="server" OnClick="imgBuscar_Click" />
-        </div>
         <div style="float:right">
             <asp:Button ID="btnMisPublicaciones" CssClass="btn bg-green-gradient" runat="server" Text="Mis publicaciones"
                 OnClick="btnMisPublicaciones_Click" Height="70%" Width="200px" />

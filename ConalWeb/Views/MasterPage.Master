@@ -102,12 +102,15 @@
 <body>
     <!-- Begin Cabecera -->
     <header class="bg-blue" >
-        <asp:HyperLink ID="hlnkImagen" NavigateUrl="~/frmProductos.aspx" runat="server">
+        <asp:HyperLink ID="hlnkImagen" NavigateUrl="~/Views/frmBoletines.aspx" runat="server">
             <img src="../img/conalapp_logo_solo.png" style="border:none; margin-left:20px"/>
             <a style="color:white; font-size:50px" >Ciudadanía Organizada Comunalmente</a>
         </asp:HyperLink>
         <nav id="menu" class="nav navbar-nav" style="background-color:gainsboro; height:100%; margin:unset; border:unset" >
-            <a id="btnConalWeb" href="frmBoletines.aspx" class="active" style="color:orangered; font-size:x-large; margin-left:20px" role="button" >ConalWeb &nbsp</a>
+            <!-- <a id="btnConalWeb" href="frmBoletines.aspx" class="active" style="color:orangered; font-size:x-large; margin-left:20px" role="button" >ConalWeb &nbsp</a> -->
+            
+            <a id="btnBoletines_menu" href="frmBoletines.aspx" runat="server" class="active" style="color:orangered; font-size:x-large; margin-left:20px" role="button" >Boletines &nbsp</a>
+            <a id="btnReunioness_menu" href="frmReuniones.aspx" runat="server" class="active" style="color:orangered; font-size:x-large" role="button" >Reuniones  &nbsp</a>
             <a id="btnMensajeria" href="frmMensajeria.aspx" runat="server" class="active" style="color:orangered; font-size:large" role="button" >Chat  &nbsp</a>
         </nav>
         

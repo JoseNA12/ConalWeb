@@ -70,6 +70,10 @@ namespace ConalWeb.Controllers
 
         public static String SELECT_ALL_COUNT_BOLETINES_BY_ID_COMUNIDAD = URL_HOST + "archivosPHP/comunidad_count_boletines.php"; // el ID es de comunidad
         public static String SELECT_ALL_COUNT_REUNIONES_BY_ID_COMUNIDAD = URL_HOST + "archivosPHP/comunidad_count_reunones.php"; // el ID es de comunidad
-    
+
+        // WEB
+        public static String DELETE_BOLETIN_BY_IDUSER_IDBOLETIN = URL_HOST + "archivosPHP/boletin_delete_by_IdBoletin_IdPersona.php"; // recibe ID persona e ID boletin
+        public static String DELETE_REUNION_BY_IDUSER_IDREUNION = URL_HOST + "archivosPHP/reunion_delete_by_IdReunion_IdPersona.php";
+        public static String SEARCH_SOSPECHOSOS = URL_HOST + "archivosPHP/buscar_sospechosos.php"; // recibe un string de la descripción
     }
 }

@@ -10,39 +10,30 @@ using ConalWeb.Controllers;
 
 namespace ConalWeb
 {
-    public partial class PanelBoletines : System.Web.UI.Page
+    public partial class PanelReuniones : System.Web.UI.Page
     {
-        private List<Boletin> boletines = new List<Boletin>();
+        private List<Reunion> reuniones = new List<Reunion>();
         private Controlador controlador = new Controlador();
-        //true = boletines; false = reuniones
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            llenarTablaBoletines(false, false); // false
+            llenarTablaReuniones(false); // false
         }
 
-        private void cargarDatos(Boolean busca)
+        private void cargarDatos()
         {
-            if (!busca)
-            {
-                boletines = controlador.cargarBoletines();
-            }
-            else
-            {
-                boletines = controlador.cargarBoletines_por_busqueda(txtBuscar.Text.ToString());
-            }
-            
+            reuniones = controlador.cargarReuniones();
         }
 
-        private void llenarTablaBoletines(bool filtro, bool busca)
+        private void llenarTablaReuniones(bool filtro)
         {
-            //carga los datos de los boletines
-            cargarDatos(busca);
+            //carga los datos de las reuniones
+            cargarDatos();
 
-            if (boletines.Count == 0)
+            if(reuniones.Count == 0)
             {
-                //divResultadosBusqueda.Visible = true;
-                //return;
+                divResultadosBusqueda.Visible = true;
+                return;
             }
 
             //limpia la tabla para meter los nuevos valores
@@ -52,25 +43,23 @@ namespace ConalWeb
             TableRow row = new TableRow();
             TableCell campo = new TableCell();
 
-            foreach (Boletin boletin in boletines)
+            foreach (Reunion reunion in reuniones)
             {
                 row = new TableRow();
 
                 //AGREGA EL MAPA DEL EVENTO
                 campo = new TableCell();
                 Image mapa = new Image();
-                mapa.ImageUrl = boletin.LinkImagenGPS;
+                mapa.ImageUrl = reunion.LinkImagenGPS;
                 campo.Controls.Add(mapa);
                 campo.Attributes.Add("Style", "width: 30%");
                 row.Cells.Add(campo);
 
                 //AGREGA LA INFORMACION DEL EVENTO
                 campo = new TableCell();
-                campo.Text = "<b><h3>" + boletin.Titular + "</h3></b> " + boletin.Provincia + "<br/>" +
-                    "<i>" + boletin.Autor + " " + boletin.Fecha + " " + boletin.Hora + "</i><br/><br/>" +
-                    "<b>Sospechosos: </b>" + boletin.Sospechosos + "<br/>" +
-                    "<b>Armas usadas: </b>" + boletin.ArmasSosp + "<br/>" +
-                    "<b>Vehículos usados: </b>" + boletin.VehiculosSosp;
+                campo.Text = "<b><h3>" + reunion.Titular + "</h3></b> " + reunion.Provincia + "<br/>" +
+                    "<i>" + reunion.Autor + " " + reunion.Fecha + " " + reunion.Hora + "</i><br/><br/>" +
+                    "<b>Descripción: </b>" + reunion.Descripcion;
                 campo.Attributes.Add("Style", "width: 40%");
                 row.Cells.Add(campo);
 
@@ -83,20 +72,17 @@ namespace ConalWeb
                 campo.Controls.Add(button);
 
                 //si es el autor puede eliminarlos
-                if (boletin.AutorInfo.getId() == ClaseSingleton.USUARIO_ACTUAL.getId())
+                if (reunion.AutorInfo.getId() == ClaseSingleton.USUARIO_ACTUAL.getId())
                 {
                     Button buttonEliminar = new Button();
                     buttonEliminar.Click += delegate
-                        {
-
-                            btnEliminarBoletin_Click(boletin.IdBoletin);
-                            // (sender, EventArgs) => { btnEliminarBoletin_Click(sender, EventArgs, boletin.IdBoletin); };
-                        };
+                    {
+                        //(sender, EventArgs) => { btnEliminarReunion_Click(sender, EventArgs, reunion.IdReunion); };
+                        btnEliminarReunion_Click(reunion.IdReunion);
+                    };
                     buttonEliminar.Text = "Eliminar";
                     buttonEliminar.CssClass = "btn btn-danger";
                     buttonEliminar.Attributes.Add("Style", "margin-left: 10%");
-                    
-                 
                     campo.Controls.Add(buttonEliminar);
                 }
 
@@ -109,7 +95,7 @@ namespace ConalWeb
                 //con filtro muestra solo los que son del usuario actual
                 if (filtro)
                 {
-                    if (boletin.AutorInfo.getId() == ClaseSingleton.USUARIO_ACTUAL.getId())
+                    if (reunion.AutorInfo.getId() == ClaseSingleton.USUARIO_ACTUAL.getId())
                     {
                         tblBoletines.Rows.Add(row);
                     }
@@ -123,7 +109,7 @@ namespace ConalWeb
 
         protected void btnMisPublicaciones_Click(object sender, EventArgs e)
         {
-            if(btnMisPublicaciones.CssClass.Equals("btn bg-green-gradient"))
+            if (btnMisPublicaciones.CssClass.Equals("btn bg-green-gradient"))
             {
                 btnMisPublicaciones.CssClass = "btn bg-green";
             }
@@ -132,31 +118,30 @@ namespace ConalWeb
                 btnMisPublicaciones.CssClass = "btn bg-green-gradient";
             }
 
-            llenarTablaBoletines(true, false);
+            llenarTablaReuniones(true);
         }
 
-        private void btnEliminarBoletin_Click(String pIdBoletin)
+        private void btnEliminarReunion_Click(String pIdReunion)
         {
-            Boolean respuesta = controlador.eliminarBoletin(pIdBoletin);
+            Boolean respuesta = controlador.eliminarReunion(ClaseSingleton.USUARIO_ACTUAL.getId(), pIdReunion);
 
             if (respuesta)
             {
-                //RecargarPagina();
-                //MsgBox("Se ha eliminado el boletín!");
-                ClientScript.RegisterStartupScript(Page.GetType(), 
+                //MsgBox("Se ha eliminado la reunión!");
+                ClientScript.RegisterStartupScript(Page.GetType(),
                     "alert",
-                    "alert('Se ha eliminado el boletín!');window.location='" + "frmBoletines" + ".aspx';", true);
-
+                    "alert('Se ha eliminado la reunión!');window.location='" + "frmReuniones" + ".aspx';", true);
             }
             else
             {
-                MsgBox("No ha sido posible eliminar!");
+                MsgBox("No ha sido posible eliminar la reunión!");
             }
         }
 
-        protected void imgBuscar_Click(object sender, ImageClickEventArgs e)
+        private void MessageBox(string msg)
         {
-            llenarTablaBoletines(false, true);
+            Page.Controls.Add(new LiteralControl(
+             "<script language='javascript'> window.alert('" + msg.Replace("'", "\\'") + "')</script>"));
         }
 
         public void MsgBox(String ex)
@@ -167,15 +152,9 @@ namespace ConalWeb
             cs.RegisterClientScriptBlock(cstype, s, s.ToString());
         }
 
-        private void RecargarPagina()
-        {
-            Response.Redirect(Request.Url.AbsoluteUri);
-        }
-
         private void println(String msg)
         {
             System.Diagnostics.Debug.WriteLine(msg);
         }
-
     }
 }

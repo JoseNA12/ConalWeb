@@ -7,6 +7,7 @@ namespace ConalWeb.Models
 {
     public class Reunion
     {
+        public String IdReunion { get; set; }
         public String Autor { get; set; }
         public String Titular { get; set; }
         public String Provincia { get; set; }
@@ -21,8 +22,9 @@ namespace ConalWeb.Models
     
         private String tipoInforme { get; set; }
 
-        public Reunion(String autor, String titular, String provincia, String fecha, String hora, String linkImagenGPS, String descrpcion, String canton, Persona autorInfo, String idComunidad, String pTipoInforme)
+        public Reunion(String id, String autor, String titular, String provincia, String fecha, String hora, String linkImagenGPS, String descrpcion, String canton, Persona autorInfo, String idComunidad, String pTipoInforme)
         {
+            this.IdReunion = id;
             this.Autor = autor;
             this.Titular = titular;
             this.Provincia = provincia;

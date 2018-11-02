@@ -7,6 +7,7 @@ namespace ConalWeb.Models
 {
     public class Boletin
     {
+        public String IdBoletin { get; set; }
         public String Autor { get; set; }
         public String Titular { get; set; }
         public String Provincia { get; set; }
@@ -23,8 +24,9 @@ namespace ConalWeb.Models
 
         private String tipoInforme { get; set; }
 
-        public Boletin(String autor, String titular, String provincia, String canton, String fecha, String hora, String descripcion, String sospechosos, String armasSosp, String vehiculosSosp, String linkImagenGPS, Persona autorInfo, String idComunidad, String pTipoInforme)
+        public Boletin(String id, String autor, String titular, String provincia, String canton, String fecha, String hora, String descripcion, String sospechosos, String armasSosp, String vehiculosSosp, String linkImagenGPS, Persona autorInfo, String idComunidad, String pTipoInforme)
         {
+            this.IdBoletin = id;
             this.Autor = autor;
             this.Titular = titular;
             this.Provincia = provincia;
