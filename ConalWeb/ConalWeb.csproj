@@ -283,6 +283,8 @@
     <Content Include="css\fonts\glyphicons-halflings-regular.woff" />
     <None Include="packages.config" />
     <Content Include="Views\MasterPage.Master" />
+    <None Include="Properties\PublishProfiles\ConalWeb - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -312,8 +314,7 @@
           <IISUrl>http://localhost:51444/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>https://conalweb.azurewebsites.net/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

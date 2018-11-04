@@ -76,9 +76,14 @@ namespace ConalWeb
 
                 //AGREGA EL BOTON
                 Button button = new Button();
-                button.Text = "Ver en Maps";
+                button.Text = "Ver mapa";
                 button.CssClass = "btn btn-default";
-
+                button.Click += delegate
+                    {
+                        //Response.Write("<script> window.open('" + boletin.LinkImagenGPS + "','_blank'); </script>");
+                        Page.ClientScript.RegisterStartupScript(
+                        this.GetType(), "OpenWindow", "window.open('"+ boletin.LinkImagenGPS + "','_newtab');", true);
+                    };
                 campo = new TableCell();
                 campo.Controls.Add(button);
 
@@ -88,7 +93,6 @@ namespace ConalWeb
                     Button buttonEliminar = new Button();
                     buttonEliminar.Click += delegate
                         {
-
                             btnEliminarBoletin_Click(boletin.IdBoletin);
                             // (sender, EventArgs) => { btnEliminarBoletin_Click(sender, EventArgs, boletin.IdBoletin); };
                         };
