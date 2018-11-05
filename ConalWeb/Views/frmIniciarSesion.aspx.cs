@@ -31,13 +31,14 @@ namespace ConalWeb.Views
 
             if (controlador.iniciarSesion(usuario, contrasena))
             {
-                Response.Redirect("frmBoletines.aspx");
+               
+                Response.Redirect("frmBoletines.aspx", false);
             }
             else
             {
                 Response.Write("<script>alert('Nombre de usuario o contrasena incorrecta.')</script>");
             }
-
+           
         }
     }
 }

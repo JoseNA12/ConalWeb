@@ -5,23 +5,25 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div style="float:left; width:60%">
-        <h1>Mensajes</h1>
-
-        <div style="margin-left:30px; margin-top:30px">
-            <asp:TextBox ID="txtMensajes" runat="server" TextMode="MultiLine" Height="250px" Width="100%"></asp:TextBox>
-        </div>
-
-        <div style="margin-left:30px; margin-top:30px">
-            <asp:TextBox ID="TextBox1" runat="server" Height="50px" Width="80%" style="font-size: large" placeholder="Ingrese su comentario"></asp:TextBox>
-            <asp:Button ID="btnEnviar" CssClass="btn bg-orange" runat="server" Text="Enviar" style="margin-left:5px; width:15%; height:50%" />
-        </div>
+    <div class="form-box" id="login-box" >
+        
+        <div class="header bg-blue">Salas de Chats</div>
+        
+            <div class="body bg-gray">
+                <div class="form-group">
+                    <asp:Label ID="lblComunidades" runat="server" Text="Seleccione una comunidad"></asp:Label>
+                    <asp:DropDownList ID="DropDownList_comunidades" AppendDataBoundItems="true" runat="server" Height="30px" Width="100%"> 
+                        <asp:ListItem Text="Comunidad 1" Value="Comunidad 1" />
+                        <asp:ListItem Text="Comunidad 2" Value="Comunidad 2" />
+                        <asp:ListItem Text="Comunidad 3" Value="Comunidad 3" />
+                        <asp:ListItem Text="Comunidad 4" Value="Comunidad 4" />
+                    </asp:DropDownList>
+                    
+                </div>
+            </div>
+            <div class="footer bg-gray">
+                <asp:Button ID="btnIngresarSalaChat" CssClass="btn bg-blue-gradient" Height="35px" Width="100%" runat="server" Text="Ingresar" OnClick="btnIngresarSalaChat_Click" />
+            </div>
     </div>
-    <div id="divComunidades" runat="server" style="float:right; width:35%">
-        <h1>Comunidades</h1>
-
-        <asp:ListBox ID="lbxComunidades" runat="server" Height="350px" Width="90%" style="margin-top:10px"></asp:ListBox>
-    </div>
-    
     
 </asp:Content>

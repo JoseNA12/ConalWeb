@@ -11,14 +11,13 @@ namespace ConalWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*List<ListItem> items = new List<ListItem>();
-            items.Add(new ListItem("Cartago", "Cartago"));
-            items.Add(new ListItem("Oreamuno", "Oreamuno"));
-            items.Add(new ListItem("Orosi", "Orosi"));
-            items.Add(new ListItem("Otra comunidad", "Otra Comunidad"));
-
-            lbxConversaciones.Items.AddRange(items.ToArray());*/
+            
         }
 
+        protected void btnIngresarSalaChat_Click(object sender, EventArgs e)
+        {
+            Session["g"] = DropDownList_comunidades.SelectedItem.Value;
+            Response.Redirect("frmChat.aspx", false);
+        }
     }
 }

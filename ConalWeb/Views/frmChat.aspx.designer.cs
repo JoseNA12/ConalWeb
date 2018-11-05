@@ -7,36 +7,45 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ConalWeb {
+namespace ConalWeb.Views {
     
     
-    public partial class frmMensajeriaCliente {
+    public partial class frmChat {
         
         /// <summary>
-        /// Control lblComunidades.
+        /// Control Label_nombreCuenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblComunidades;
+        protected global::System.Web.UI.WebControls.Label Label_nombreCuenta;
         
         /// <summary>
-        /// Control DropDownList_comunidades.
+        /// Control name.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList_comunidades;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText name;
         
         /// <summary>
-        /// Control btnIngresarSalaChat.
+        /// Control Label_comunidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIngresarSalaChat;
+        protected global::System.Web.UI.WebControls.Label Label_comunidad;
+        
+        /// <summary>
+        /// Control g.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText g;
     }
 }
