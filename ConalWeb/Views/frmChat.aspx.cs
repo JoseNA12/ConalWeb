@@ -15,11 +15,11 @@ namespace ConalWeb.Views
         {
             if (Session["g"] != null)
             {
-                Label_comunidad.Text = Session["g"].ToString();
+                /*Label_comunidad.Text = Session["g"].ToString();
                 Label_nombreCuenta.Text = ClaseSingleton.USUARIO_ACTUAL.getNombre();
 
                 g.Value = Session["g"].ToString();
-                name.Value = ClaseSingleton.USUARIO_ACTUAL.getNombre();
+                name.Value = ClaseSingleton.USUARIO_ACTUAL.getNombre();*/
                 
             }
         }
