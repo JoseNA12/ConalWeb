@@ -6,15 +6,27 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style type="text/css">
+        #cajaMensajes {
+            width: 549px;
+            height: 143px;
+        }
+        #TextArea1 {
+            height: 260px;
+            width: 580px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <form id="form1" runat="server">
+    <div class="container" style="align-content:center">
         <input type="text" id="miMensaje" />
         <input type="button" id="btnEnviarMsg" value="Send" />
         <input type="hidden" id="nombreUsuario" runat="server" />
         <input type="hidden" id="nombreComunidad" runat="server" />
-        <ul id="discussion"></ul>
+        <ul id="cajaMensajes"></ul>
     </div>
+    
     <!--Script references. -->
     <!--Reference the jQuery library. -->
     <script src="Scripts/jquery-3.3.1.min.js" "></script>
@@ -35,7 +47,7 @@
             //var nombreComunidad = "Comunidad 1";
 
             chat.client.receive = function (name, conId, msge) {
-                $('#discussion').append("<li>" + name + " : " + msge + "</li>");
+                $('#cajaMensajes').append("<li>" + name + " : " + msge + "</li>");
             }
 
             /*chat.client.broadcastMessage = function (name, message) {
@@ -43,11 +55,11 @@
                 var encodedName = $('<div />').text(name).html();
                 var encodedMsg = $('<div />').text(message).html();
                 // Add the message to the page.
-                $('#discussion').append('<li><strong>' + encodedName
+                $('#cajaMensajes').append('<li><strong>' + encodedName
                     + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
             };*/
             // Get the user name and store it to prepend to messages.
-            $('#nombreUsuario').val(prompt('Enter your name:', ''));
+            //$('#nombreUsuario').val(prompt('Enter your name:', ''));
             // Set initial focus to message input box.
             $('#miMensaje').focus();
             // Start the connection.
@@ -63,8 +75,16 @@
                     // Clear text box and reset focus for next comment.
                     $('#miMensaje').val('').focus();
                 });
+
+                $("#miMensaje").keypress(function (e) {
+                if (e.which == 13) {
+                    $('#btnEnviarMsg').click();
+                }
+            });
             });
         });
     </script>
+        <textarea id="TextArea_mensajes" runat="server"></textarea>
+    </form>
 </body>
 </html>

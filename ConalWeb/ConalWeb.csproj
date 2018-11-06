@@ -257,11 +257,11 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\jquery.signalR-2.3.0.js" />
     <Content Include="Scripts\jquery.signalR-2.3.0.min.js" />
-    <Content Include="Views\frmChat.aspx" />
+    <Content Include="frmChat.aspx" />
     <Content Include="Views\frmReuniones.aspx" />
     <Content Include="Views\frmIniciarSesion.aspx" />
     <Content Include="Views\frmBoletines.aspx" />
-    <Content Include="Views\frmMensajeria.aspx" />
+    <Content Include="frmMensajeria.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -274,15 +274,16 @@
     </Compile>
     <Compile Include="ChatHub.cs" />
     <Compile Include="Models\Boletin.cs" />
+    <Compile Include="Models\Comunidad.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Reunion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Views\frmChat.aspx.cs">
+    <Compile Include="frmChat.aspx.cs">
       <DependentUpon>frmChat.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\frmChat.aspx.designer.cs">
+    <Compile Include="frmChat.aspx.designer.cs">
       <DependentUpon>frmChat.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\frmReuniones.aspx.cs">
@@ -306,11 +307,11 @@
     <Compile Include="Views\frmBoletines.aspx.designer.cs">
       <DependentUpon>frmBoletines.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmMensajeria.aspx.cs">
+    <Compile Include="frmMensajeria.aspx.cs">
       <DependentUpon>frmMensajeria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\frmMensajeria.aspx.designer.cs">
+    <Compile Include="frmMensajeria.aspx.designer.cs">
       <DependentUpon>frmMensajeria.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\MasterPage.Master.cs">

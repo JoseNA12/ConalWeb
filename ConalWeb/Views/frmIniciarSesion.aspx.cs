@@ -31,7 +31,7 @@ namespace ConalWeb.Views
 
             if (controlador.iniciarSesion(usuario, contrasena))
             {
-               
+                Session["USUARIO_ACTUAL"] = ClaseSingleton.USUARIO_ACTUAL.getNombre();
                 Response.Redirect("frmBoletines.aspx", false);
             }
             else

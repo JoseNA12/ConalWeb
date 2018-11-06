@@ -75,5 +75,6 @@ namespace ConalWeb.Controllers
         public static String DELETE_BOLETIN_BY_IDUSER_IDBOLETIN = URL_HOST + "archivosPHP/boletin_delete_by_IdBoletin_IdPersona.php"; // recibe ID persona e ID boletin
         public static String DELETE_REUNION_BY_IDUSER_IDREUNION = URL_HOST + "archivosPHP/reunion_delete_by_IdReunion_IdPersona.php";
         public static String SEARCH_SOSPECHOSOS = URL_HOST + "archivosPHP/buscar_sospechosos.php"; // recibe un string de la descripción
+        public static String SELECT_COMUNIDADES_LIKE_USUARIO = URL_HOST + "archivosPHP/comunidad_select_by_IdPersona.php";
     }
 }

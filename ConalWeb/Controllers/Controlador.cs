@@ -242,6 +242,34 @@ namespace ConalWeb.Controllers
             return reuniones;
         }
 
+        public List<Comunidad> cargarComunidadesDeUsuario()
+        {
+            List<Comunidad> comunidades = new List<Comunidad>();
+
+            String respuesta = executeQuery(ClaseSingleton.SELECT_COMUNIDADES_LIKE_USUARIO + "?IdPersona=" + ClaseSingleton.USUARIO_ACTUAL.getId());
+
+            try
+            {
+                JObject jsonObject = JObject.Parse(respuesta);
+
+                if (!jsonObject.Value<string>("status").Equals("false"))
+                {
+                    JToken valores = jsonObject.GetValue("value");
+                    foreach (JObject json in valores)
+                    {
+                        String idComunidad = json.Value<string>("IdReunion");
+                        String nombreComunidad = json.Value<string>("Comunidad");
+
+                        comunidades.Add(new Comunidad(idComunidad, nombreComunidad));
+                    }
+                }
+
+            }
+            catch (Exception e) { }
+
+            return comunidades;
+        }
+
         public Boolean eliminarBoletin(String pIdBoletin)
         {
             String respuesta = executeQuery(

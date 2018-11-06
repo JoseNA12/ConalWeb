@@ -13,15 +13,5 @@ namespace ConalWeb.Views
         {
             
         }
-
-        protected void btnMensajeria_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("frmMensajeria.aspx");
-        }
-
-        protected void btnChat_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("frmMensajeria.aspx");
-        }
     }
 }

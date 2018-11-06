@@ -7,27 +7,39 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ConalWeb.Views {
+namespace ConalWeb {
     
     
-    public partial class frmChat {
+    public partial class frmMensajeriaCliente {
         
         /// <summary>
-        /// Control nombreUsuario.
+        /// Control DropDownList_comunidades.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden nombreUsuario;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList_comunidades;
         
         /// <summary>
-        /// Control nombreComunidad.
+        /// Control btn_ingresarSala.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden nombreComunidad;
+        protected global::System.Web.UI.WebControls.Button btn_ingresarSala;
+        
+        /// <summary>
+        /// Propiedad PreviousPage.
+        /// </summary>
+        /// <remarks>
+        /// Propiedad generada automáticamente.
+        /// </remarks>
+        public new ConalWeb.Views.IniciarSesion PreviousPage {
+            get {
+                return ((ConalWeb.Views.IniciarSesion)(base.PreviousPage));
+            }
+        }
     }
 }
