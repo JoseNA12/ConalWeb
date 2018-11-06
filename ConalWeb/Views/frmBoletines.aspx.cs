@@ -25,7 +25,7 @@ namespace ConalWeb
         {
             if (!busca)
             {
-                boletines = controlador.cargarBoletines(Session["USUARIO_ACTUAL_ID"].ToString());
+                boletines = controlador.cargarBoletines();
             }
             else
             {
@@ -88,7 +88,7 @@ namespace ConalWeb
                 campo.Controls.Add(button);
 
                 //si es el autor puede eliminarlos
-                if (boletin.AutorInfo.getId() == ClaseSingleton.USUARIO_ACTUAL.getId())
+                if (boletin.AutorInfo.getId().ToString() == HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString())
                 {
                     Button buttonEliminar = new Button();
                     buttonEliminar.Click += delegate
@@ -110,7 +110,7 @@ namespace ConalWeb
                 //con filtro muestra solo los que son del usuario actual
                 if (filtro)
                 {
-                    if (boletin.AutorInfo.getId() == ClaseSingleton.USUARIO_ACTUAL.getId())
+                    if (boletin.AutorInfo.getId().ToString() == HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString())
                     {
                         tblBoletines.Rows.Add(row);
                     }

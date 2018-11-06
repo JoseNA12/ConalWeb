@@ -78,7 +78,7 @@ namespace ConalWeb
                 campo.Controls.Add(button);
 
                 //si es el autor puede eliminarlos
-                if (reunion.AutorInfo.getId() == ClaseSingleton.USUARIO_ACTUAL.getId())
+                if (reunion.AutorInfo.getId().ToString() == HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString())
                 {
                     Button buttonEliminar = new Button();
                     buttonEliminar.Click += delegate
@@ -98,7 +98,7 @@ namespace ConalWeb
                 //con filtro muestra solo los que son del usuario actual
                 if (filtro)
                 {
-                    if (reunion.AutorInfo.getId() == ClaseSingleton.USUARIO_ACTUAL.getId())
+                    if (reunion.AutorInfo.getId().ToString() == HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString())
                     {
                         tblBoletines.Rows.Add(row);
                     }
@@ -126,7 +126,7 @@ namespace ConalWeb
 
         private void btnEliminarReunion_Click(String pIdReunion)
         {
-            Boolean respuesta = controlador.eliminarReunion(ClaseSingleton.USUARIO_ACTUAL.getId(), pIdReunion);
+            Boolean respuesta = controlador.eliminarReunion(pIdReunion);
 
             if (respuesta)
             {

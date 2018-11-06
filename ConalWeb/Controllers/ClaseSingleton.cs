@@ -39,7 +39,7 @@ namespace ConalWeb.Controllers
          */
 
         // Usuario Actual
-        public static Persona USUARIO_ACTUAL = new Persona();
+        //public static Persona USUARIO_ACTUAL = new Persona();
 
         // IP del servidor
         private static String URL_HOST = "http://conalapp.000webhostapp.com/";

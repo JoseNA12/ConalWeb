@@ -105,7 +105,7 @@ namespace ConalWeb.Controllers
                     {
                         JObject subjson = json.Value<JObject>("value");
 
-                        ClaseSingleton.USUARIO_ACTUAL.setId(subjson.Value<int>("IdPersona"));
+                        /*ClaseSingleton.USUARIO_ACTUAL.setId(subjson.Value<int>("IdPersona"));
                         ClaseSingleton.USUARIO_ACTUAL.setCorreo(subjson.Value<string>("Correo"));
                         ClaseSingleton.USUARIO_ACTUAL.setNombre(subjson.Value<string>("Nombre"));
                         ClaseSingleton.USUARIO_ACTUAL.setApellido(subjson.Value<string>("Apellido"));
@@ -113,7 +113,10 @@ namespace ConalWeb.Controllers
                         ClaseSingleton.USUARIO_ACTUAL.setBiografia(subjson.Value<string>("biografia"));
                         ClaseSingleton.USUARIO_ACTUAL.setGenero(subjson.Value<string>("genero"));
                         ClaseSingleton.USUARIO_ACTUAL.setLugarResidencia(subjson.Value<string>("lugarResidencia"));
-                        ClaseSingleton.USUARIO_ACTUAL.setSobrenombre(subjson.Value<string>("sobrenombre"));
+                        ClaseSingleton.USUARIO_ACTUAL.setSobrenombre(subjson.Value<string>("sobrenombre"));*/
+    
+                        HttpContext.Current.Session.Add("USUARIO_ACTUAL_NOMBRE", subjson.Value<string>("Nombre"));
+                        HttpContext.Current.Session.Add("USUARIO_ACTUAL_ID", subjson.Value<int>("IdPersona"));
 
                         return true;
                     }
@@ -123,11 +126,11 @@ namespace ConalWeb.Controllers
             }
         }
 
-        public List<Boletin> cargarBoletines(string pId)
+        public List<Boletin> cargarBoletines()
         {
             List<Boletin> boletines = new List<Boletin>();
 
-            String respuesta = executeQuery(ClaseSingleton.SELECT_ALL_BOLETIN + "?IdPersona=" + pId);
+            String respuesta = executeQuery(ClaseSingleton.SELECT_ALL_BOLETIN + "?IdPersona=" + HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString());
 
             try
             {
@@ -173,7 +176,7 @@ namespace ConalWeb.Controllers
                         autor.setLugarResidencia(lugarResidencia);
                         autor.setSobrenombre(sobrenombreAutor);
 
-                        Console.WriteLine(IdComunidad);
+                        //Console.WriteLine(IdComunidad);
 
                         boletines.Add(
                                 new Boletin(idBoletin, autor.getNombre() + autor.getApellido(), titular, provincia, canton, fecha, hora, descripcion,
@@ -190,7 +193,7 @@ namespace ConalWeb.Controllers
         {
             List<Reunion> reuniones = new List<Reunion>();
 
-            String respuesta = executeQuery(ClaseSingleton.SELECT_ALL_REUNION + "?IdPersona=" + ClaseSingleton.USUARIO_ACTUAL.getId());
+            String respuesta = executeQuery(ClaseSingleton.SELECT_ALL_REUNION + "?IdPersona=" + HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString());
 
             try
             {
@@ -248,7 +251,7 @@ namespace ConalWeb.Controllers
         {
             List<Comunidad> comunidades = new List<Comunidad>();
 
-            String respuesta = executeQuery(ClaseSingleton.SELECT_COMUNIDADES_LIKE_USUARIO + "?IdPersona=" + ClaseSingleton.USUARIO_ACTUAL.getId());
+            String respuesta = executeQuery(ClaseSingleton.SELECT_COMUNIDADES_LIKE_USUARIO + "?IdPersona=" + HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString());
 
             try
             {
@@ -277,7 +280,7 @@ namespace ConalWeb.Controllers
             String respuesta = executeQuery(
                 ClaseSingleton.DELETE_BOLETIN_BY_IDUSER_IDBOLETIN + 
                 "?IdBoletin=" + pIdBoletin + 
-                "&IdPersona=" + ClaseSingleton.USUARIO_ACTUAL.getId());
+                "&IdPersona=" + HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString());
 
             try
             {
@@ -298,12 +301,12 @@ namespace ConalWeb.Controllers
             return false;
         }
 
-        public Boolean eliminarReunion(int pIdUsuario, String pIdBoletin)
+        public Boolean eliminarReunion(String pIdBoletin)
         {
             String respuesta = executeQuery(
                 ClaseSingleton.DELETE_REUNION_BY_IDUSER_IDREUNION +
                 "?IdReunion=" + pIdBoletin +
-                "&IdPersona=" + ClaseSingleton.USUARIO_ACTUAL.getId());
+                "&IdPersona=" + HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString());
 
             try
             {
