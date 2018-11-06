@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8"  />
     <title> ConalWeb </title>
     <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/css/bootstrap.min.css" rel="stylesheet"  />

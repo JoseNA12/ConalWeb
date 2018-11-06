@@ -66,7 +66,7 @@ namespace ConalWeb
                 //AGREGA EL BOTON
                 Button button = new Button();
                 button.Text = "Ver mapa";
-                button.CssClass = "btn btn-default";
+                button.CssClass = "btn btn-default botonCelda";
                 button.Click += delegate
                 {
                     //Response.Write("<script> window.open('" + boletin.LinkImagenGPS + "','_blank'); </script>");
@@ -87,15 +87,13 @@ namespace ConalWeb
                         btnEliminarReunion_Click(reunion.IdReunion);
                     };
                     buttonEliminar.Text = "Eliminar";
-                    buttonEliminar.CssClass = "btn btn-danger";
+                    buttonEliminar.CssClass = "btn btn-danger  botonCelda";
                     buttonEliminar.Attributes.Add("Style", "margin-left: 10%");
                     campo.Controls.Add(buttonEliminar);
                 }
 
-                campo.Attributes.Add("Style", "width: 20%");
+                campo.Attributes.Add("Style", "width: 20%; text-align: center;");
                 row.Cells.Add(campo);
-
-                row.Attributes.Add("Style", "height:60px");
 
                 //con filtro muestra solo los que son del usuario actual
                 if (filtro)

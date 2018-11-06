@@ -96,6 +96,39 @@
             text-align: right;
             background-color:#f9f9f9;
         }
+        .txtBoxRounded
+        {
+            border-radius: 25px;
+            -moz-border-radius:25px;
+        }
+        .tableBorder{
+            font-size: medium;
+            text-align: left;
+            grid-row: auto;
+            border-style: solid;
+        }
+        .tableBorder, td, th{
+            border-bottom: 3px solid;
+            border-color: gainsboro;
+        }
+        .marginToFooter{
+            margin-bottom: 60px;
+        }
+        .botonCelda{
+            width: 40%;
+            height: 30px;
+        }
+
+        @media only screen and (max-width: 760px), (min-device-width: 768px)
+        and (max-device-width: 1024px) {
+        /* Force table to not be like tables anymore */
+        table, thead, tbody, th, td, tr {
+            display:table-row;
+            border-collapse:separate;
+            border-spacing:0 15px;
+            border-bottom: 3px solid;
+            border-color: gainsboro;
+        }
     </style>
 </head>
 
@@ -106,7 +139,7 @@
             <img src="../img/conalapp_logo_solo.png" style="border:none; margin-left:20px"/>
             <a style="color:white; font-size:46px" >Ciudadanía Organizada Comunalmente</a>
         </asp:HyperLink>
-        <nav id="menu" class="nav navbar-nav" style="background-color:gainsboro; margin:unset; border:unset" >
+        <nav id="menu" style="background-color:gainsboro;" >
             <!-- <a id="btnConalWeb" href="frmBoletines.aspx" class="active" style="color:orangered; font-size:x-large; margin-left:20px" role="button" >ConalWeb &nbsp</a> -->
             
             <a id="btnBoletines_menu" href="frmBoletines.aspx" runat="server" class="active" style="color:orangered; font-size:x-large; margin-left:20px" role="button" >Boletines &nbsp</a>
@@ -117,7 +150,7 @@
     </header>
     <!-- End Cabecera-->
 
-    <section class="content" style="margin-left:20px; margin-right:20px;">
+    <section class="content" style="margin-left:5%; margin-right:5%;">
         <form id="form1" runat="server">
             <div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

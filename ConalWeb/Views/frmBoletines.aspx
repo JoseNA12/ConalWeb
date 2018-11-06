@@ -2,41 +2,17 @@
 <%@ PreviousPageType VirtualPath="~/Views/frmIniciarSesion.aspx" %> 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!-- script para estilos específicos del view -->
-    <style type="text/css">
-        .txtBoxRounded
-        {
-            border-radius: 25px;
-            -moz-border-radius:25px;
-        }
-        .tableBorder{
-            font-size: medium;
-            text-align: left;
-            grid-row: auto;
-            border-style: solid;
-        }
-        .tableBorder, td, th{
-            border-bottom: 3px solid;
-            border-color: gainsboro;
-        }
-        .marginToFooter{
-            margin-bottom: 60px;
-        }
-        .principalButton{
-            width: 15%;
-            height: 100%;
-        }
-    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="margin-top: 10px; height:60px; float:none">
-        <div id="divBuscar" runat="server" style="float:left">
-            <asp:TextBox ID="txtBuscar" CssClass="txtBoxRounded" Width="180px" runat="server" placeholder="Buscar perfil" ></asp:TextBox>
-            <asp:ImageButton ID="imgBuscar" AlternateText="Buscar" ImageAlign="Middle" ImageUrl="~/img/lupa_icon.png" runat="server" OnClick="imgBuscar_Click" />
-        </div>
-        <div style="float:right">
+    <div style="margin-top: 10px; height:100px;">
+        <div id="divBuscar" runat="server" style="width:100%;">
+            <asp:TextBox ID="txtBuscar" CssClass="txtBoxRounded" runat="server" placeholder="Buscar perfil" Height="35px" Width="150px" ></asp:TextBox>
+            <asp:ImageButton ID="imgBuscar" AlternateText="Buscar" ImageAlign="Middle" ImageUrl="~/img/lupa_icon.png" runat="server" OnClick="imgBuscar_Click"
+                style="padding-right:10%"/>
+
             <asp:Button ID="btnMisPublicaciones" CssClass="btn bg-green-gradient" runat="server" Text="Mis publicaciones"
-                OnClick="btnMisPublicaciones_Click" Height="70%" Width="200px" />
+                OnClick="btnMisPublicaciones_Click" Height="35px" Width="150px" style="margin-top:10px;"/>
         </div>
     </div>
     
@@ -46,7 +22,7 @@
     </div>
     
     <div>
-        <asp:Table ID="tblBoletines" runat="server" Width="100%" CssClass="marginToFooter" >
+        <asp:Table ID="tblBoletines" runat="server" Width="100%" CssClass="table-responsive marginToFooter" >
             <asp:TableHeaderRow runat="server" CssClass="tableBorder">
             </asp:TableHeaderRow>
         </asp:Table>
