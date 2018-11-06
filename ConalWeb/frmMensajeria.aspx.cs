@@ -16,13 +16,28 @@ namespace ConalWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            cargarDatos();
+            if (HttpContext.Current.Session[ClaseSingleton.sessionKey_usuarioID] != null) // evitar saltarse el inicio de sesion
+            {
+                cargarDatos();
+            }
+            else
+            {
+                Response.Redirect("Views/frmIniciarSesion.aspx", false);
+            }
         }
 
         protected void btnIngresarSalaChat_Click(object sender, EventArgs e)
         {
-            HttpContext.Current.Session["NOMBRE_COMUNIDAD"] = DropDownList_comunidades.SelectedItem.Value;
-            Response.Redirect("frmChat.aspx", false);
+            if (DropDownList_comunidades.SelectedItem != null)
+            {
+                HttpContext.Current.Session[ClaseSingleton.sessionKey_comunidad] = DropDownList_comunidades.SelectedItem.Value;
+                Response.Redirect("frmChat.aspx", false);
+            }
+            else
+            {
+                Response.Write("<script>alert('Debe seleccionar una comunidad o grupo.')</script>");
+            }
+            
         }
 
         private void cargarDatos()

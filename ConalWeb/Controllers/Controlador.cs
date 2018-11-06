@@ -115,8 +115,8 @@ namespace ConalWeb.Controllers
                         ClaseSingleton.USUARIO_ACTUAL.setLugarResidencia(subjson.Value<string>("lugarResidencia"));
                         ClaseSingleton.USUARIO_ACTUAL.setSobrenombre(subjson.Value<string>("sobrenombre"));*/
     
-                        HttpContext.Current.Session.Add("USUARIO_ACTUAL_NOMBRE", subjson.Value<string>("Nombre"));
-                        HttpContext.Current.Session.Add("USUARIO_ACTUAL_ID", subjson.Value<int>("IdPersona"));
+                        HttpContext.Current.Session.Add(ClaseSingleton.sessionKey_usuarioNombre, subjson.Value<string>("Nombre"));
+                        HttpContext.Current.Session.Add(ClaseSingleton.sessionKey_usuarioID, subjson.Value<int>("IdPersona"));
 
                         return true;
                     }
@@ -130,7 +130,7 @@ namespace ConalWeb.Controllers
         {
             List<Boletin> boletines = new List<Boletin>();
 
-            String respuesta = executeQuery(ClaseSingleton.SELECT_ALL_BOLETIN + "?IdPersona=" + HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString());
+            String respuesta = executeQuery(ClaseSingleton.SELECT_ALL_BOLETIN + "?IdPersona=" + HttpContext.Current.Session[ClaseSingleton.sessionKey_usuarioID].ToString());
 
             try
             {
@@ -193,7 +193,7 @@ namespace ConalWeb.Controllers
         {
             List<Reunion> reuniones = new List<Reunion>();
 
-            String respuesta = executeQuery(ClaseSingleton.SELECT_ALL_REUNION + "?IdPersona=" + HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString());
+            String respuesta = executeQuery(ClaseSingleton.SELECT_ALL_REUNION + "?IdPersona=" + HttpContext.Current.Session[ClaseSingleton.sessionKey_usuarioID].ToString());
 
             try
             {
@@ -251,7 +251,7 @@ namespace ConalWeb.Controllers
         {
             List<Comunidad> comunidades = new List<Comunidad>();
 
-            String respuesta = executeQuery(ClaseSingleton.SELECT_COMUNIDADES_LIKE_USUARIO + "?IdPersona=" + HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString());
+            String respuesta = executeQuery(ClaseSingleton.SELECT_COMUNIDADES_LIKE_USUARIO + "?IdPersona=" + HttpContext.Current.Session[ClaseSingleton.sessionKey_usuarioID].ToString());
 
             try
             {
@@ -280,7 +280,7 @@ namespace ConalWeb.Controllers
             String respuesta = executeQuery(
                 ClaseSingleton.DELETE_BOLETIN_BY_IDUSER_IDBOLETIN + 
                 "?IdBoletin=" + pIdBoletin + 
-                "&IdPersona=" + HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString());
+                "&IdPersona=" + HttpContext.Current.Session[ClaseSingleton.sessionKey_usuarioID].ToString());
 
             try
             {
@@ -306,7 +306,7 @@ namespace ConalWeb.Controllers
             String respuesta = executeQuery(
                 ClaseSingleton.DELETE_REUNION_BY_IDUSER_IDREUNION +
                 "?IdReunion=" + pIdBoletin +
-                "&IdPersona=" + HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString());
+                "&IdPersona=" + HttpContext.Current.Session[ClaseSingleton.sessionKey_usuarioID].ToString());
 
             try
             {

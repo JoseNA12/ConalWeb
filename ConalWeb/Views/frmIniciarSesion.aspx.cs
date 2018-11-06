@@ -18,7 +18,7 @@ namespace ConalWeb.Views
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //VALIDAR
+            HttpContext.Current.Session.RemoveAll(); // importante para el iniciar y cerrar sesión
         }
 
         protected void btnIniciarSesion_Click(object sender, EventArgs e)

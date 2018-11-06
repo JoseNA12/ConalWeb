@@ -13,16 +13,19 @@ namespace ConalWeb.Views
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.Session["NOMBRE_COMUNIDAD"].ToString() != null)
+            if (HttpContext.Current.Session[ClaseSingleton.sessionKey_usuarioID] != null) // evitar saltarse el inicio de sesion
             {
                 /*Label_comunidad.Text = Session["g"].ToString();
                 Label_nombreCuenta.Text = ClaseSingleton.USUARIO_ACTUAL.getNombre();
 
                 g.Value = Session["g"].ToString();
                 name.Value = ClaseSingleton.USUARIO_ACTUAL.getNombre();*/
-                nombreComunidad.Value = HttpContext.Current.Session["NOMBRE_COMUNIDAD"].ToString();
-                nombreUsuario.Value = HttpContext.Current.Session["USUARIO_ACTUAL_NOMBRE"].ToString() + HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString();
-
+                nombreComunidad.Value = HttpContext.Current.Session[ClaseSingleton.sessionKey_comunidad].ToString();
+                nombreUsuario.Value = HttpContext.Current.Session[ClaseSingleton.sessionKey_usuarioNombre].ToString() + HttpContext.Current.Session[ClaseSingleton.sessionKey_usuarioID].ToString();
+            }
+            else
+            {
+                Response.Redirect("Views/frmIniciarSesion.aspx", false);
             }
         }
     }

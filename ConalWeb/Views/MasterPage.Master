@@ -144,7 +144,8 @@
             
             <a id="btnBoletines_menu" href="frmBoletines.aspx" runat="server" class="active" style="color:orangered; font-size:x-large; margin-left:20px" role="button" >Boletines &nbsp</a>
             <a id="btnReunioness_menu" href="frmReuniones.aspx" runat="server" class="active" style="color:orangered; font-size:x-large" role="button" >Reuniones  &nbsp</a>
-            <a id="btnMensajeria" href="../frmMensajeria.aspx" runat="server" class="active" style="color:orangered; font-size:large" role="button" >Chat  &nbsp</a>
+            <a id="btnMensajeria" href="../frmMensajeria.aspx" runat="server" class="active" style="color:orangered; font-size:x-large" role="button" >Chat  &nbsp</a>
+            <a id="btnCerrarSesion" href="frmIniciarSesion.aspx" runat="server" class="active" style="color:orangered; font-size:large" role="button" >Cerrar sesión  &nbsp</a>
         </nav>
         
     </header>

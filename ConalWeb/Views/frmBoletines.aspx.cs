@@ -18,7 +18,15 @@ namespace ConalWeb
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            llenarTablaBoletines(false, false); // false
+            if (HttpContext.Current.Session[ClaseSingleton.sessionKey_usuarioID] != null) // evitar saltarse el inicio de sesion
+            {
+                llenarTablaBoletines(false, false); // false
+            }
+            else
+            {
+                Response.Redirect("frmIniciarSesion.aspx", false);
+            }
+            
         }
 
         private void cargarDatos(Boolean busca)
@@ -88,7 +96,7 @@ namespace ConalWeb
                 campo.Controls.Add(button);
 
                 //si es el autor puede eliminarlos
-                if (boletin.AutorInfo.getId().ToString() == HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString())
+                if (boletin.AutorInfo.getId().ToString() == HttpContext.Current.Session[ClaseSingleton.sessionKey_usuarioID].ToString())
                 {
                     Button buttonEliminar = new Button();
                     buttonEliminar.Click += delegate
@@ -110,7 +118,7 @@ namespace ConalWeb
                 //con filtro muestra solo los que son del usuario actual
                 if (filtro)
                 {
-                    if (boletin.AutorInfo.getId().ToString() == HttpContext.Current.Session["USUARIO_ACTUAL_ID"].ToString())
+                    if (boletin.AutorInfo.getId().ToString() == HttpContext.Current.Session[ClaseSingleton.sessionKey_usuarioID].ToString())
                     {
                         tblBoletines.Rows.Add(row);
                     }
