@@ -16,7 +16,7 @@ namespace ConalWeb
 
         protected void btnIngresarSalaChat_Click(object sender, EventArgs e)
         {
-            Session["g"] = DropDownList_comunidades.SelectedItem.Value;
+            Session["nombreComunidad"] = DropDownList_comunidades.SelectedItem.Value;
             Response.Redirect("frmChat.aspx", false);
         }
     }

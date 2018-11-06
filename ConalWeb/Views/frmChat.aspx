@@ -9,9 +9,10 @@
 </head>
 <body>
     <div class="container">
-        <input type="text" id="message" />
-        <input type="button" id="sendmessage" value="Send" />
-        <input type="hidden" id="displayname" />
+        <input type="text" id="miMensaje" />
+        <input type="button" id="btnEnviarMsg" value="Send" />
+        <input type="hidden" id="nombreUsuario" runat="server" />
+        <input type="hidden" id="nombreComunidad" runat="server" />
         <ul id="discussion"></ul>
     </div>
     <!--Script references. -->
@@ -24,14 +25,14 @@
     <!--Add script to update the page and send messages.-->
     <script type="text/javascript">
 
-        // TODO: Lo que tiene chat.server son los metodos de ChatHub.cs
-
-        var nombreGrupo = "Sala 1";
+        // TODO: Lo de "chat.server" son los metodos de ChatHub.cs, "chat.client" ya es otra cosa de jquery
 
         $(function () {
             // Declare a proxy to reference the hub.
             var chat = $.connection.chatHub;
             // Create a function that the hub can call to broadcast messages.
+
+            //var nombreComunidad = "Comunidad 1";
 
             chat.client.receive = function (name, conId, msge) {
                 $('#discussion').append("<li>" + name + " : " + msge + "</li>");
@@ -46,21 +47,21 @@
                     + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
             };*/
             // Get the user name and store it to prepend to messages.
-            $('#displayname').val(prompt('Enter your name:', ''));
+            $('#nombreUsuario').val(prompt('Enter your name:', ''));
             // Set initial focus to message input box.
-            $('#message').focus();
+            $('#miMensaje').focus();
             // Start the connection.
             $.connection.hub.start().done(function () {
 
                 // unirse al grupo
-                chat.server.join(nombreGrupo);
+                chat.server.join($('#nombreComunidad').val());
 
-                $('#sendmessage').click(function () {
+                $('#btnEnviarMsg').click(function () {
                     // Call the Send method on the hub.
-                    //chat.server.send($('#displayname').val(), $('#message').val());
-                    chat.server.sendMessage($('#displayname').val(), $('#message').val(), nombreGrupo);
+                    //chat.server.send($('#nombreUsuario').val(), $('#message').val());
+                    chat.server.sendMessage($('#nombreUsuario').val(), $('#miMensaje').val(), $('#nombreComunidad').val());
                     // Clear text box and reset focus for next comment.
-                    $('#message').val('').focus();
+                    $('#miMensaje').val('').focus();
                 });
             });
         });

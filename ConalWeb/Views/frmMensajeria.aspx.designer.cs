@@ -13,13 +13,13 @@ namespace ConalWeb {
     public partial class frmMensajeriaCliente {
         
         /// <summary>
-        /// Control lblComunidades.
+        /// Control form1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblComunidades;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
         /// Control DropDownList_comunidades.
@@ -31,12 +31,12 @@ namespace ConalWeb {
         protected global::System.Web.UI.WebControls.DropDownList DropDownList_comunidades;
         
         /// <summary>
-        /// Control btnIngresarSalaChat.
+        /// Control btn_ingresarSala.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIngresarSalaChat;
+        protected global::System.Web.UI.WebControls.Button btn_ingresarSala;
     }
 }

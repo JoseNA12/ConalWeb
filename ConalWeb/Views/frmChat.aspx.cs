@@ -13,14 +13,16 @@ namespace ConalWeb.Views
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["g"] != null)
+            if (Session["nombreComunidad"] != null)
             {
                 /*Label_comunidad.Text = Session["g"].ToString();
                 Label_nombreCuenta.Text = ClaseSingleton.USUARIO_ACTUAL.getNombre();
 
                 g.Value = Session["g"].ToString();
                 name.Value = ClaseSingleton.USUARIO_ACTUAL.getNombre();*/
-                
+                nombreComunidad.Value = Session["nombreComunidad"].ToString();
+                nombreUsuario.Value = ClaseSingleton.USUARIO_ACTUAL.getNombre();
+
             }
         }
     }

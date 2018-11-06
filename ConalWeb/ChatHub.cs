@@ -1,15 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
-using Microsoft.AspNet.SignalR.Hubs;
 
-namespace ConalWeb.Hubs
+namespace ConalWeb
 {
     //[HubName("myHub")]
-    public class MyHub : Hub
+    public class ChatHub : Hub
     {
+        public void Send(string name, string message)
+        {
+            // Call the broadcastMessage method to update clients.
+            Clients.All.broadcastMessage(name, message); // Original de la libreria
+        }
+
+
+
         private static int _count = 0;
 
         public void SendMessage(string name, string msge, string group)
@@ -48,7 +53,7 @@ namespace ConalWeb.Hubs
     {
         public static void Say(string message)
         {
-            var allContext = GlobalHost.ConnectionManager.GetHubContext<MyHub>();
+            var allContext = GlobalHost.ConnectionManager.GetHubContext<ChatHub>();
             allContext.Clients.All.sayClient(message);
 
         }
