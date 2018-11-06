@@ -5,26 +5,52 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>Sala de Chat</title>
+    
     <style type="text/css">
-        #cajaMensajes {
-            width: 549px;
-            height: 143px;
-        }
-        #TextArea1 {
-            height: 260px;
-            width: 580px;
-        }
+        
+        
     </style>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
-<body>
-    <form id="form1" runat="server">
-    <div class="container" style="align-content:center">
-        <input type="text" id="miMensaje" />
-        <input type="button" id="btnEnviarMsg" value="Send" />
-        <input type="hidden" id="nombreUsuario" runat="server" />
-        <input type="hidden" id="nombreComunidad" runat="server" />
-        <ul id="cajaMensajes"></ul>
+<body style="background-color:gainsboro;">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <asp:Label ID="Label3" runat="server" Text="Sala de chat" Font-Bold="True" Font-Size="X-Large" ForeColor="#006600"></asp:Label>
+                    </div>
+                    <div class="panel-body">
+                        <asp:Label ID="Label2" runat="server" Text="Bienvenido(a)!" Font-Bold="True"></asp:Label>
+                        <div id="mostrar_nombre"></div>
+                        <input type="hidden" id="nombreUsuario" runat="server" />
+                        <br />
+                        <asp:Label ID="Label1" runat="server" Text="Comunidad: " Font-Bold="True"></asp:Label>
+                        <div id="mostrar_comunidad"></div>
+                        <input type="hidden" id="nombreComunidad" runat="server" />
+                        <br />
+                        <textarea id="miMensaje" class="form-control" style="min-height:200px;" name="message"></textarea>
+                        <br />
+                        <input type="button" id="btnEnviarMsg" value="Enviar" class="btn btn-success"  />
+                        <br />
+                        <div class="panel panel-default" style="margin-top:10px;">
+                            <div class="panel-body">
+                                <ul id="cajaMensajes"></ul>
+                            </div>
+                        </div>
+                   
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
     
     <!--Script references. -->
@@ -44,20 +70,11 @@
             var chat = $.connection.chatHub;
             // Create a function that the hub can call to broadcast messages.
 
-            //var nombreComunidad = "Comunidad 1";
-
             chat.client.receive = function (name, conId, msge) {
                 $('#cajaMensajes').append("<li>" + name + " : " + msge + "</li>");
+
             }
 
-            /*chat.client.broadcastMessage = function (name, message) {
-                // Html encode display name and message.
-                var encodedName = $('<div />').text(name).html();
-                var encodedMsg = $('<div />').text(message).html();
-                // Add the message to the page.
-                $('#cajaMensajes').append('<li><strong>' + encodedName
-                    + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
-            };*/
             // Get the user name and store it to prepend to messages.
             //$('#nombreUsuario').val(prompt('Enter your name:', ''));
             // Set initial focus to message input box.
@@ -67,6 +84,8 @@
 
                 // unirse al grupo
                 chat.server.join($('#nombreComunidad').val());
+                $('#mostrar_nombre').text($('#nombreUsuario').val());
+                $('#mostrar_comunidad').text($('#nombreComunidad').val());
 
                 $('#btnEnviarMsg').click(function () {
                     // Call the Send method on the hub.
@@ -84,7 +103,9 @@
             });
         });
     </script>
-        <textarea id="TextArea_mensajes" runat="server"></textarea>
-    </form>
+        
+
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

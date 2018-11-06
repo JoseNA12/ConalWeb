@@ -21,8 +21,8 @@ namespace ConalWeb.Views
                 g.Value = Session["g"].ToString();
                 name.Value = ClaseSingleton.USUARIO_ACTUAL.getNombre();*/
                 nombreComunidad.Value = Session["nombreComunidad"].ToString();
-                nombreUsuario.Value = Session["USUARIO_ACTUAL"].ToString(); 
-
+                nombreUsuario.Value = Session["USUARIO_ACTUAL"].ToString();
+                
             }
         }
     }

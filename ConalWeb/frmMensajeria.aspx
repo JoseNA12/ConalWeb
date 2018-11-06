@@ -9,6 +9,9 @@
 
         <div style="text-align:center;">
             
+            <asp:Label ID="Label1" runat="server" Text="Seleccione una comunidad para ingresar al chat"></asp:Label>
+            <br/>
+            <br/>
             <asp:DropDownList ID="DropDownList_comunidades" runat="server" Width="295px"></asp:DropDownList>
             <br/>
             <br/>

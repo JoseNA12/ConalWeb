@@ -25,7 +25,7 @@ namespace ConalWeb
         {
             if (!busca)
             {
-                boletines = controlador.cargarBoletines();
+                boletines = controlador.cargarBoletines(Session["USUARIO_ACTUAL_ID"].ToString());
             }
             else
             {

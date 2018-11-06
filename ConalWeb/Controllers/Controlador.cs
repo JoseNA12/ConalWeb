@@ -9,6 +9,8 @@ using ConalWeb.Models;
 using System.Collections.Specialized;
 using System.Text;
 
+// https://msdn.microsoft.com/en-us/library/ms178581.aspx
+
 namespace ConalWeb.Controllers
 {
     public class Controlador
@@ -121,11 +123,11 @@ namespace ConalWeb.Controllers
             }
         }
 
-        public List<Boletin> cargarBoletines()
+        public List<Boletin> cargarBoletines(string pId)
         {
             List<Boletin> boletines = new List<Boletin>();
 
-            String respuesta = executeQuery(ClaseSingleton.SELECT_ALL_BOLETIN + "?IdPersona=" + ClaseSingleton.USUARIO_ACTUAL.getId());
+            String respuesta = executeQuery(ClaseSingleton.SELECT_ALL_BOLETIN + "?IdPersona=" + pId);
 
             try
             {
